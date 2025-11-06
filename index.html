@@ -99,15 +99,6 @@
             margin-bottom: 30px;
         }
 
-        .cta-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
@@ -119,45 +110,12 @@
             font-weight: 600;
             box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 20px 0;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(30, 144, 255, 0.4);
-        }
-
-        .qr-code-container {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            text-align: center;
-        }
-
-        .qr-code-container img {
-            width: 150px;
-            height: 150px;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .qr-code-container p {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .qr-placeholder {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
-            border: 3px dashed rgba(30, 144, 255, 0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
         }
 
         .partner-note {
@@ -236,33 +194,21 @@
             text-align: center;
             margin: 40px 0;
             animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-photo-container {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            max-width: 90%;
-            position: relative;
-            z-index: 2;
         }
 
         .hero-photo img {
             max-width: 100%;
             max-height: 400px;
-            border-radius: 15px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
             object-fit: cover;
-            display: block;
         }
 
         .hero-photo-placeholder {
             background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
             padding: 80px 40px;
-            border-radius: 15px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
             border: 3px dashed rgba(30, 144, 255, 0.3);
         }
 
@@ -490,11 +436,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .hero-photo-container {
-                max-width: 100%;
-                padding: 20px;
-            }
-
             .hero-photo img {
                 max-height: 300px;
             }
@@ -508,8 +449,8 @@
     <!-- Goal Tracker Overlay -->
     <div class="goal-overlay">
         <h3>🎯 Our Goal</h3>
-        <div class="goal-text">Goal: <strong id="goalAmount">$5000</strong></div>
-        <div class="goal-text">Raised: <strong id="raisedAmount">$1201</strong></div>
+        <div class="goal-text">Goal: <strong id="goalAmount">$500</strong></div>
+        <div class="goal-text">Raised: <strong id="raisedAmount">$300</strong></div>
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -521,28 +462,20 @@
             <h1>🎁 Patel Brothers' Toy Drive 2025</h1>
             <p class="tagline">"Please Help Us, Help Others"</p>
             <p class="subline">Help us spread joy this holiday season!</p>
-            
-            <div class="cta-section">
-                <a href="https://venmo.com/stephaniepatel499" class="cta-button" target="_blank">💝 Donate via Venmo</a>
-                
-                <div class="qr-code-container">
-                    <!-- Replace "venmo-qr.png" with your QR code image filename -->
-                    <!-- <img src="venmo-qr.png" alt="Venmo QR Code"> -->
-                    
-                    <!-- Placeholder (remove when you add QR code) -->
-                    <div class="qr-placeholder">📱</div>
-                    <p>Scan to Donate</p>
-                </div>
-            </div>
-            
+            <a href="https://venmo.com/stephaniepatel499" class="cta-button" target="_blank">💝 Donate via Venmo</a>
             <p class="partner-note">In collaboration with Storytime Crafts, Hometown Arcade, and the YMCA of Greater Boston.</p>
         </header>
 
         <!-- Hero Photo Section -->
         <div class="hero-photo">
-            <div class="hero-photo-container">
-                <!-- Replace "flyer.jpg" with your actual image filename -->
-                <img src="main-pic.png" alt="Patel Brothers Toy Drive 2025">
+            <!-- Replace "flyer.jpg" with your actual image filename -->
+            <!-- Upload your image to the same folder as index.html or to an 'images' folder -->
+            <img src="main-pic.png" alt="Patel Brothers Toy Drive 2025">
+            
+            <!-- Placeholder until you add your image -->
+            <div class="hero-photo-placeholder">
+                <p>📸 Upload your flyer image here</p>
+                <p style="font-size: 0.9em; margin-top: 10px; color: #666;">Place your image in the repository and update the src path</p>
             </div>
         </div>
 
@@ -556,7 +489,7 @@
 
         <!-- Drop-Off & Donation Info -->
         <section>
-            <h2>📍 How to Donate Toys</h2>
+            <h2>📍 How to Donate</h2>
             <div class="cards-grid">
                 <div class="card">
                     <h3><span class="card-icon">📦</span> Drop Off</h3>
@@ -586,6 +519,23 @@
         <section>
             <h2>📷 Our Progress</h2>
             <div class="gallery-grid">
+                <!-- OPTION 1: Add photos by uncommenting and adding image URLs -->
+                <!-- 
+                <div class="gallery-item">
+                    <img src="your-image-1.jpg" alt="Progress photo 1">
+                    <div class="gallery-caption">We've collected 250 toys so far!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="your-image-2.jpg" alt="Progress photo 2">
+                    <div class="gallery-caption">Thank you to all our donors!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="your-image-3.jpg" alt="Progress photo 3">
+                    <div class="gallery-caption">Making a difference together!</div>
+                </div>
+                -->
+                
+                <!-- OPTION 2: Placeholders (remove when adding photos) -->
                 <div class="gallery-item">
                     <div class="gallery-item-placeholder">
                         <p>🎉 Progress photos and updates coming soon!</p>
@@ -615,8 +565,8 @@
         // ===================================
         // EDIT THESE VALUES TO UPDATE GOAL
         // ===================================
-        const GOAL = 5000;      // Total goal amount
-        const RAISED = 1201;    // Current amount raised
+        const GOAL = 500;      // Total goal amount
+        const RAISED = 300;    // Current amount raised
         // ===================================
 
         // Calculate percentage
