@@ -148,10 +148,18 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
         }
 
         .partner-logo:hover {
             transform: translateY(-5px);
+        }
+
+        .partner-logo[href=""], .partner-logo:not([href]) {
+            cursor: default;
+            pointer-events: none;
         }
 
         .partner-logo img {
@@ -469,17 +477,18 @@
             <div class="partner-section">
                 <p class="partner-note">In collaboration with:</p>
                 <div class="partner-logos">
-                    <div class="partner-logo">
+                    <!-- Add link in href="" or leave empty for no link -->
+                    <a href="https://www.storytimecrafts.net/" target="_blank" class="partner-logo">
                         <img src="storytime.jpeg" alt="Storytime Crafts">
-                    </div>
+                    </a>
                     
-                    <div class="partner-logo">
+                    <a href="https://www.hometownarcade.com" target="_blank" class="partner-logo">
                         <img src="hometown.png" alt="Hometown Arcade">
-                    </div>
+                    </a>
                     
-                    <div class="partner-logo">
+                    <a href="https://ymcaboston.org" target="_blank" class="partner-logo">
                         <img src="ymca-logo.png" alt="YMCA of Greater Boston">
-                    </div>
+                    </a>
                 </div>
             </div>
         </header>
