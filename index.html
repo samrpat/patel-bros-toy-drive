@@ -122,18 +122,6 @@
             font-weight: 500;
         }
 
-        .qr-placeholder {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
-            border: 3px dashed rgba(30, 144, 255, 0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-        }
-
         .partner-section {
             margin-top: 30px;
             text-align: center;
@@ -172,83 +160,6 @@
             object-fit: contain;
         }
 
-        .partner-logo-placeholder {
-            height: 60px;
-            width: 120px;
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
-            border: 2px dashed rgba(30, 144, 255, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            color: #999;
-        }
-
-        /* Goal Tracker Overlay */
-        .goal-overlay {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            animation: slideIn 1s ease-out;
-        }
-
-        .goal-overlay h3 {
-            color: #0066cc;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .goal-text {
-            font-size: 1.1em;
-            color: #333;
-            margin: 8px 0;
-            font-weight: 500;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 25px;
-            background: rgba(200, 200, 200, 0.3);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-top: 15px;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #1e90ff 0%, #00bfff 100%);
-            border-radius: 15px;
-            transition: width 2s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            to {
-                left: 100%;
-            }
-        }
-
         /* Hero Photo Section */
         .hero-photo {
             text-align: center;
@@ -275,19 +186,6 @@
             border-radius: 15px;
             object-fit: cover;
             display: block;
-        }
-
-        .hero-photo-placeholder {
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
-            padding: 80px 40px;
-            border-radius: 15px;
-            border: 3px dashed rgba(30, 144, 255, 0.3);
-        }
-
-        .hero-photo-placeholder p {
-            color: #0066cc;
-            font-size: 1.2em;
-            font-weight: 500;
         }
 
         /* Sections */
@@ -419,6 +317,42 @@
             font-weight: 500;
         }
 
+        /* Year Box Styling */
+        .year-box {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(30, 144, 255, 0.2);
+        }
+
+        .year-box.green {
+            background: linear-gradient(135deg, rgba(30, 122, 62, 0.05) 0%, rgba(46, 139, 87, 0.05) 100%);
+            border-color: rgba(30, 122, 62, 0.2);
+        }
+
+        .year-box.light-blue {
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.05) 0%, rgba(100, 149, 237, 0.05) 100%);
+            border-color: rgba(135, 206, 235, 0.3);
+        }
+
+        .year-box h3 {
+            color: #0066cc;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .year-box.green h3 {
+            color: #1e7a3e;
+        }
+
+        .year-box.light-blue h3 {
+            color: #4682b4;
+        }
+
         /* Footer */
         footer {
             background: rgba(30, 122, 62, 0.9);
@@ -465,17 +399,6 @@
             }
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         /* Mobile Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -488,12 +411,6 @@
 
             .subline {
                 font-size: 1em;
-            }
-
-            .goal-overlay {
-                position: static;
-                margin: 20px;
-                width: calc(100% - 40px);
             }
 
             section {
@@ -524,6 +441,10 @@
             .partner-logo img {
                 height: 50px;
             }
+
+            .year-box {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -548,9 +469,6 @@
             <div class="partner-section">
                 <p class="partner-note">In collaboration with:</p>
                 <div class="partner-logos">
-                    <!-- Add your partner logos here -->
-                    <!-- Example: <div class="partner-logo"><img src="storytime-logo.png" alt="Storytime Crafts"></div> -->
-                    
                     <div class="partner-logo">
                         <img src="storytime.jpeg" alt="Storytime Crafts">
                     </div>
@@ -561,7 +479,6 @@
                     
                     <div class="partner-logo">
                         <img src="ymca-logo.png" alt="YMCA of Greater Boston">
-
                     </div>
                 </div>
             </div>
@@ -640,40 +557,34 @@
             </p>
             
             <!-- 2024 Box -->
-            <div style="background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%); padding: 40px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08); border: 2px solid rgba(30, 144, 255, 0.2);">
-                <h3 style="color: #0066cc; font-size: 1.8em; margin-bottom: 20px; text-align: center; font-weight: 700;">2024 Toy Drive</h3>
+            <div class="year-box">
+                <h3>2024 Toy Drive</h3>
                 <div class="gallery-grid">
-                    <!-- Add your 2024 photos here -->
-                    <!-- Example: <div class="gallery-item"><img src="2024-photo1.jpg" alt="2024 Toy Drive"><div class="gallery-caption">Amazing turnout in 2024!</div></div> -->
                     <div class="gallery-item">
-                        <div class="gallery-item"><img src="2023.jpeg" alt="2023 Toy Drive"><div class="gallery-caption">Over 700 toys collected!</div></div>
-                            
-                        </div>
+                        <img src="2023.jpeg" alt="2024 Toy Drive">
+                        <div class="gallery-caption">Over 700 toys collected!</div>
                     </div>
                 </div>
             </div>
 
             <!-- 2023 Box -->
-            <div style="background: linear-gradient(135deg, rgba(30, 122, 62, 0.05) 0%, rgba(46, 139, 87, 0.05) 100%); padding: 40px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08); border: 2px solid rgba(30, 122, 62, 0.2);">
-                <h3 style="color: #1e7a3e; font-size: 1.8em; margin-bottom: 20px; text-align: center; font-weight: 700;">2023 Toy Drive</h3>
+            <div class="year-box green">
+                <h3>2023 Toy Drive</h3>
                 <div class="gallery-grid">
-                    <!-- Add your 2023 photos here -->
-                    </div>
                     <div class="gallery-item">
-                        <div class="gallery-item"><img src="2022.jpeg" alt="2024 Toy Drive"><div class="gallery-caption">Over 400 toys collected!</div></div>
-                        </div>
+                        <img src="2022.jpeg" alt="2023 Toy Drive">
+                        <div class="gallery-caption">Over 400 toys collected!</div>
                     </div>
                 </div>
             </div>
 
             <!-- 2022 Box -->
-            <div style="background: linear-gradient(135deg, rgba(135, 206, 235, 0.05) 0%, rgba(100, 149, 237, 0.05) 100%); padding: 40px; border-radius: 20px; box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08); border: 2px solid rgba(135, 206, 235, 0.3);">
-                <h3 style="color: #4682b4; font-size: 1.8em; margin-bottom: 20px; text-align: center; font-weight: 700;">2022 Toy Drive</h3>
+            <div class="year-box light-blue">
+                <h3>2022 Toy Drive</h3>
                 <div class="gallery-grid">
-                    <!-- Add your 2022 photos here -->
                     <div class="gallery-item">
-                        <div class="gallery-item"><img src="2020.jpeg" alt="2020 Toy Drive"><div class="gallery-caption">Amazing turnout in 2020!</div></div>
-                        </div>
+                        <img src="2020.jpeg" alt="2022 Toy Drive">
+                        <div class="gallery-caption">Amazing turnout in 2020!</div>
                     </div>
                 </div>
             </div>
