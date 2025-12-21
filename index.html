@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patel Brothers' Toy Drive 2025</title>
+    <title>Thank You - Patel Brothers' Toy Drive 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -20,7 +20,7 @@
             background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #e0f2ff 100%);
         }
 
-        /* Snow effect */
+        /* Snow/Sparkle effect */
         .snowflake {
             position: fixed;
             top: -10px;
@@ -45,259 +45,211 @@
             z-index: 1;
         }
 
-        /* Header */
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 100;
+            font-size: 0.95em;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Header */
         header {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 80px 20px 50px;
             animation: fadeIn 1s ease-in;
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 4em;
             font-weight: 700;
-            color: #0066cc;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #1e7a3e;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
         .tagline {
-            font-size: 1.5em;
-            color: #1e7a3e;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .subline {
             font-size: 1.1em;
-            color: #555;
-            margin-bottom: 30px;
+            color: #777;
+            font-style: italic;
         }
 
-        .cta-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: inline-block;
+        /* Impact Section - VERY PROMINENT */
+        .impact-hero {
             background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
             color: white;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(30, 144, 255, 0.4);
-        }
-
-        .qr-code-container {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 50px 0;
+            padding: 80px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(30, 144, 255, 0.4);
             text-align: center;
-        }
-
-        .qr-code-container img {
-            width: 150px;
-            height: 150px;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .qr-code-container p {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .partner-section {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .partner-note {
-            font-size: 1em;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .partner-logos {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .partner-logo {
-            background: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            display: block;
-            cursor: pointer;
-        }
-
-        .partner-logo:hover {
-            transform: translateY(-5px);
-        }
-
-        .partner-logo[href=""], .partner-logo:not([href]) {
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .partner-logo img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Hero Photo Section */
-        .hero-photo {
-            text-align: center;
-            margin: 40px 0;
             animation: fadeInUp 0.8s ease-out;
             position: relative;
-            z-index: 2;
+            overflow: hidden;
         }
 
-        .hero-photo-container {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            max-width: 90%;
+        .impact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .impact-number {
+            font-size: 6em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 2;
         }
 
-        .hero-photo img {
-            max-width: 100%;
-            max-height: 400px;
-            border-radius: 15px;
-            object-fit: cover;
-            display: block;
+        .impact-label {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
         }
 
         /* Sections */
         section {
             background: rgba(255, 255, 255, 0.9);
-            margin: 30px 0;
-            padding: 50px 40px;
+            margin: 40px 0;
+            padding: 60px 40px;
             border-radius: 25px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             animation: fadeInUp 0.8s ease-out;
             backdrop-filter: blur(10px);
         }
 
         h2 {
             color: #0066cc;
-            font-size: 2.2em;
-            margin-bottom: 25px;
+            font-size: 2.5em;
+            margin-bottom: 30px;
             text-align: center;
             font-weight: 700;
         }
 
-        .about-content {
-            font-size: 1.15em;
-            line-height: 1.8;
-            color: #444;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-        }
-
-        .card h3 {
-            color: #1e7a3e;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-icon {
-            font-size: 1.8em;
-        }
-
-        .card p {
-            color: #555;
-            line-height: 1.7;
-            margin: 10px 0;
-        }
-
-        .card strong {
-            color: #333;
-        }
-
-        .deadline {
-            background: linear-gradient(135deg, #1e90ff 0%, #0066cc 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
+        /* Thank You Message */
+        .gratitude-text {
             font-size: 1.2em;
+            line-height: 1.9;
+            color: #444;
+            max-width: 900px;
+            margin: 0 auto 25px;
+        }
+
+        .gratitude-text strong {
+            color: #0066cc;
             font-weight: 600;
-            margin-top: 30px;
-            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
+        }
+
+        /* Quote Cards */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #1e90ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .quote-card::before {
+            content: '"';
+            font-size: 5em;
+            color: rgba(30, 144, 255, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #555;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
         }
 
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .gallery-item {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-item img {
@@ -308,57 +260,34 @@
         }
 
         .gallery-item-placeholder {
-            padding: 40px;
-            text-align: center;
-            font-size: 1.1em;
-            color: #555;
-            min-height: 200px;
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
+            border: 3px dashed rgba(30, 144, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.1em;
+            color: #999;
         }
 
         .gallery-caption {
-            padding: 15px;
+            padding: 20px;
             text-align: center;
             color: #333;
             font-weight: 500;
+            line-height: 1.6;
         }
 
-        /* Year Box Styling */
-        .year-box {
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 191, 255, 0.05) 100%);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-            border: 2px solid rgba(30, 144, 255, 0.2);
-        }
-
-        .year-box.green {
-            background: linear-gradient(135deg, rgba(30, 122, 62, 0.05) 0%, rgba(46, 139, 87, 0.05) 100%);
-            border-color: rgba(30, 122, 62, 0.2);
-        }
-
-        .year-box.light-blue {
-            background: linear-gradient(135deg, rgba(135, 206, 235, 0.05) 0%, rgba(100, 149, 237, 0.05) 100%);
-            border-color: rgba(135, 206, 235, 0.3);
-        }
-
-        .year-box h3 {
-            color: #0066cc;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .year-box.green h3 {
-            color: #1e7a3e;
-        }
-
-        .year-box.light-blue h3 {
-            color: #4682b4;
+        .gallery-note {
+            background: rgba(30, 144, 255, 0.08);
+            border-left: 4px solid #1e90ff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #555;
         }
 
         /* Footer */
@@ -366,19 +295,26 @@
             background: rgba(30, 122, 62, 0.9);
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-            backdrop-filter: blur(10px);
+            padding: 50px 20px;
+            margin-top: 60px;
         }
 
-        footer a {
+        footer .brand {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
             color: #87ceeb;
-            text-decoration: none;
-            font-weight: 600;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        footer .tagline {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        footer .year {
+            font-size: 0.95em;
+            opacity: 0.8;
+            margin-top: 15px;
         }
 
         .footer-heart {
@@ -388,12 +324,8 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
@@ -409,206 +341,165 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin: 20px;
+            }
+
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
 
-            .tagline {
-                font-size: 1.2em;
+            .subtitle {
+                font-size: 1.3em;
             }
 
-            .subline {
-                font-size: 1em;
+            .impact-number {
+                font-size: 3.5em;
+            }
+
+            .impact-label {
+                font-size: 1.5em;
+            }
+
+            .impact-text {
+                font-size: 1.1em;
+            }
+
+            .impact-hero {
+                padding: 50px 25px;
             }
 
             section {
-                padding: 30px 20px;
+                padding: 40px 25px;
             }
 
             h2 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
 
-            .cards-grid {
+            .quotes-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-photo-container {
-                max-width: 100%;
-                padding: 20px;
-            }
-
-            .hero-photo img {
-                max-height: 300px;
-            }
-
-            .partner-logos {
-                gap: 15px;
-            }
-
-            .partner-logo img {
-                height: 50px;
-            }
-
-            .year-box {
-                padding: 30px 20px;
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <a href="index.html" class="back-button">← Back to Toy Drive</a>
+
     <div class="container">
-        <!-- Header -->
+        <!-- Hero Header -->
         <header>
-            <h1>🎁 Patel Brothers' Toy Drive 2025</h1>
+            <h1>Thank You 2025 ❤️</h1>
+            <p class="subtitle">The Patel Brothers' Toy Drive</p>
             <p class="tagline">"Please Help Us, Help Others"</p>
-            <p class="subline">Help us spread joy this holiday season!</p>
-            
-            <div class="cta-section">
-                <a href="https://venmo.com/stephaniepatel499" class="cta-button" target="_blank">💝 Donate via Venmo</a>
-                
-                <div class="qr-code-container">
-                    <img src="VENMO-QR.png" alt="Venmo QR Code">
-                    <p>Scan to Donate</p>
-                </div>
-            </div>
-            
-            <!-- Partner Logos Section -->
-            <div class="partner-section">
-                <p class="partner-note">In collaboration with:</p>
-                <div class="partner-logos">
-                    <!-- Add link in href="" or leave empty for no link -->
-                    <a href="https://www.storytimecrafts.net/" target="_blank" class="partner-logo">
-                        <img src="storytime.jpeg" alt="Storytime Crafts">
-                    </a>
-                    
-                    <a href="https://www.hometownarcade.com" target="_blank" class="partner-logo">
-                        <img src="hometown.png" alt="Hometown Arcade">
-                    </a>
-                    
-                    <a href="https://ymcaboston.org" target="_blank" class="partner-logo">
-                        <img src="ymca-logo.png" alt="YMCA of Greater Boston">
-                    </a>
-                </div>
-            </div>
         </header>
 
-        <!-- Hero Photo Section -->
-        <div class="hero-photo">
-            <div class="hero-photo-container">
-                <img src="main-pic.png" alt="Patel Brothers Toy Drive 2025">
-            </div>
+        <!-- IMPACT HERO SECTION - VERY PROMINENT -->
+        <div class="impact-hero">
+            <div class="impact-number">878</div>
+            <div class="impact-label">Toys Donated</div>
+<!--            <p class="impact-text">
+                Thank you for making this our best year yet. We were able to donate 878 toys!
+            </p>
+-->            
         </div>
 
-        <!-- About Section -->
+        <!-- Thank You Message -->
         <section>
-            <h2>❤️ About Our Toy Drive</h2>
-            <div class="about-content">
-                We are excited for our 4th Toy Drive! This year we're hosting a Holiday Store at the YMCA of Greater Boston, where partner schools can 'shop' for their families. We are collaborating with Storytime Crafts, Hometown Arcade, and the YMCA of Greater Boston to collect new, unwrapped toys.
-            </div>
-        </section>
+            <h2>❤️ Thank You</h2>
+            <p class="gratitude-text">
+                We are grateful to everyone who contributed their time, resources, and energy—whether through giving donations, shopping, collecting boxes, packing boxes, or spreading the word.
 
-        <!-- Drop-Off & Donation Info -->
-        <section>
-            <h2>📍 How to Donate Toys</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3><span class="card-icon">📦</span> Drop Off</h3>
-                    <p><strong>Location 1:</strong><br>499 Webster St<br>Needham, MA</p>
-                    <p><strong>Location 2:</strong><br>Hometown Arcade<br>61 Endicott St, Building 26A<br>Norwood, MA</p>
-                </div>
-
-                <div class="card">
-                    <h3><span class="card-icon">📮</span> Mail / Ship Toys</h3>
-                    <p><strong>Address:</strong><br>Patel Brothers' Toy Drive<br>499 Webster St<br>Needham, MA 02494</p>
-                    <p><em>Please add a gift note indicating it's for Patel Brothers' Toy Drive</em></p>
-                </div>
-
-                <div class="card">
-                    <h3><span class="card-icon">🚪</span> Porch Pickup</h3>
-                    <p><strong>Email us at:</strong><br><a href="mailto:moshiers@gmail.com" style="color: #0066cc;">moshiers@gmail.com</a></p>
-                    <p>We'll arrange a convenient pickup time!</p>
-                </div>
-            </div>
-
-            <div class="deadline">
-                ⏰ Deadline: All donations must be received by December 7th
-            </div>
-        </section>
-
-        <!-- This Year's Progress Section -->
-        <section>
-            <h2>📷 This Year's Progress</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">
-                        <img src="progress1-IMG_0228.jpg">
-
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">
-                        <img src="progress2-IMG_4879.jpeg">
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">
-                        <img src="progress3-IMG_0260.jpeg">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Prior Years Section -->
-        <section>
-            <h2>🎄 Prior Years' Toy Drives</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.1em;">
-                Thank you to everyone who has supported us over the years!
             </p>
-            
-            <!-- 2024 Box -->
-            <div class="year-box">
-                <h3>2023 Toy Drive</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="2023.jpeg" alt="2023 Toy Drive">
-                        <div class="gallery-caption">Over 700 toys collected!</div>
+            <p class="gratitude-text">
+                A <strong>special thank you</strong> to our partners Storytime Crafts, Hometown Arcade, and the YMCA of Greater Boston.
+            </p>
+            <p class="gratitude-text">
+                We are proud to continue this tradition with you.
+            </p>
+        </section>
+
+<!--     <!-- Reflections / Quotes Section -->
+        <section>
+            <h2>🗣️ Reflections from Our Team</h2>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <p class="quote-text">
+                        The Toy Drive is my favorite because of the joy we bring to others during the holidays… Shopping is one of the best parts because we come out of the store with many carts full of toys… After we dropped off the toys at the YMCA, the director sent us reaction videos and it really warmed my heart.
+                    </p>
+                </div>
+
+                <div class="quote-card">
+                    <p class="quote-text">
+                        The Toy Drive is my favorite part of the year. It's amazing seeing how much people donate, with the number growing each year… Being able to pass on that joy and seeing the impact a donated toy has really makes me appreciate everything even more.
+                    </p>
+                </div>
+
+                <div class="quote-card">
+                    <p class="quote-text">
+                        It was shocking to see how many toys we collected this year… I love seeing the before and after and how much progress we've made each year.
+                    </p>
+                </div>
+            </div>
+        </section>
+-->
+        <!-- Photo Gallery -->
+        <section>
+            <h2>📷 Toy Drive 2025 Highlights</h2>
+            <div class="gallery-grid">
+                <!-- Replace placeholders with actual images -->
+                <!-- Example: <div class="gallery-item"><img src="images/shopping-day.jpg" alt="Shopping Day"></div> -->
+                
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>Shopping Day</p>
                     </div>
+                    <div class="gallery-caption">Shopping day — carts full of toys</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>Packing & Sorting</p>
+                    </div>
+                    <div class="gallery-caption">Packing and sorting donations</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>YMCA Setup</p>
+                    </div>
+                    <div class="gallery-caption">YMCA Toy Shop setup</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>Drop-Off Day</p>
+                    </div>
+                    <div class="gallery-caption">Drop-off day</div>
                 </div>
             </div>
 
-            <!-- 2023 Box -->
-            <div class="year-box green">
-                <h3>2022 Toy Drive</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="2022.jpeg" alt="2022 Toy Drive">
-                        <div class="gallery-caption">Over 400 toys collected!</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2022 Box -->
-            <div class="year-box light-blue">
-                <h3>2020 Toy Drive</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="2020.jpeg" alt="2020 Toy Drive">
-                        <div class="gallery-caption">Amazing turnout in 2020!</div>
-                    </div>
-                </div>
+            <div class="gallery-note">
+                <strong>About the YMCA Toy Shop:</strong> This is the 'YMCA Toy Shop' set up for school staff from YMCA partner schools to shop on behalf of families from their community.
             </div>
         </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>📧 Contact: <a href="mailto:moshiers@gmail.com">moshiers@gmail.com</a></p>
-        <p style="margin-top: 15px;">Please <span class="footer-heart">❤️</span> help us, help others</p>
+        <div class="brand">The Patel Brothers' Toy Drive</div>
+        <div class="tagline">Made with <span class="footer-heart">❤️</span> for our community</div>
+        <div class="year">2025</div>
     </footer>
 
     <script>
-        // Create snowflakes
+        // Create sparkles/snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -625,10 +516,10 @@
             }, 8000);
         }
 
-        // Generate snowflakes periodically
+        // Generate sparkles periodically
         setInterval(createSnowflake, 300);
 
-        // Initial snowflakes
+        // Initial sparkles
         for (let i = 0; i < 20; i++) {
             setTimeout(createSnowflake, i * 100);
         }
