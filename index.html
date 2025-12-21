@@ -45,27 +45,7 @@
             z-index: 1;
         }
 
-        /* Back Button */
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #0066cc;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 100;
-            font-size: 0.95em;
-        }
 
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
 
         /* Hero Header */
         header {
@@ -341,12 +321,6 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .back-button {
-                position: static;
-                display: inline-block;
-                margin: 20px;
-            }
-
             h1 {
                 font-size: 2.5em;
             }
@@ -390,8 +364,6 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">← Back to Toy Drive</a>
-
     <div class="container">
         <!-- Hero Header -->
         <header>
@@ -404,10 +376,9 @@
         <div class="impact-hero">
             <div class="impact-number">878</div>
             <div class="impact-label">Toys Donated</div>
-<!--            <p class="impact-text">
+            <p class="impact-text">
                 Thank you for making this our best year yet. We were able to donate 878 toys!
             </p>
--->            
         </div>
 
         <!-- Thank You Message -->
@@ -415,7 +386,6 @@
             <h2>❤️ Thank You</h2>
             <p class="gratitude-text">
                 We are grateful to everyone who contributed their time, resources, and energy—whether through giving donations, shopping, collecting boxes, packing boxes, or spreading the word.
-
             </p>
             <p class="gratitude-text">
                 A <strong>special thank you</strong> to our partners Storytime Crafts, Hometown Arcade, and the YMCA of Greater Boston.
@@ -425,7 +395,8 @@
             </p>
         </section>
 
-<!--     <!-- Reflections / Quotes Section -->
+        <!-- Reflections / Quotes Section -->
+        <!-- 
         <section>
             <h2>🗣️ Reflections from Our Team</h2>
             <div class="quotes-grid">
@@ -448,40 +419,55 @@
                 </div>
             </div>
         </section>
--->
+        -->
+
         <!-- Photo Gallery -->
         <section>
             <h2>📷 Toy Drive 2025 Highlights</h2>
             <div class="gallery-grid">
                 <!-- Replace placeholders with actual images -->
-                <!-- Example: <div class="gallery-item"><img src="images/shopping-day.jpg" alt="Shopping Day"></div> -->
+                <!-- Example: <div class="gallery-item"><img src="images/shopping-day.jpg" alt="Shopping Day"><div class="gallery-caption">Your caption</div></div> -->
                 
                 <div class="gallery-item">
                     <div class="gallery-item-placeholder">
-                        <p>Shopping Day</p>
+                        <p>Photo 1</p>
                     </div>
                     <div class="gallery-caption">Shopping day — carts full of toys</div>
                 </div>
 
                 <div class="gallery-item">
                     <div class="gallery-item-placeholder">
-                        <p>Packing & Sorting</p>
+                        <p>Photo 2</p>
                     </div>
                     <div class="gallery-caption">Packing and sorting donations</div>
                 </div>
 
                 <div class="gallery-item">
                     <div class="gallery-item-placeholder">
-                        <p>YMCA Setup</p>
+                        <p>Photo 3</p>
                     </div>
                     <div class="gallery-caption">YMCA Toy Shop setup</div>
                 </div>
 
                 <div class="gallery-item">
                     <div class="gallery-item-placeholder">
-                        <p>Drop-Off Day</p>
+                        <p>Photo 4</p>
                     </div>
                     <div class="gallery-caption">Drop-off day</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>Photo 5</p>
+                    </div>
+                    <div class="gallery-caption">Add your caption here</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">
+                        <p>Photo 6</p>
+                    </div>
+                    <div class="gallery-caption">Add your caption here</div>
                 </div>
             </div>
 
@@ -494,7 +480,6 @@
     <!-- Footer -->
     <footer>
         <div class="brand">The Patel Brothers' Toy Drive</div>
-        <div class="tagline">Made with <span class="footer-heart">❤️</span> for our community</div>
         <div class="year">2025</div>
     </footer>
 
