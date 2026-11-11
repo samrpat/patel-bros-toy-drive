@@ -22,7 +22,10 @@ Anything left as `null` is simply not shown on the public site.
 npm install        # once
 npm run dev        # preview at http://localhost:4321/patel-bros-toy-drive/ (exactly what the public will see)
 npm run build      # the real public site, written to dist/
+npm run publish    # build and put it live (updates in a few minutes)
 ```
+
+The live site is served from the `gh-pages` branch. `main` holds the source. Last year's site is kept at the tag `2025-site`.
 
 ## More
 

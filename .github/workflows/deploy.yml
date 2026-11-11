@@ -1,9 +1,9 @@
-# Builds the site and publishes it to GitHub Pages whenever `main` changes.
-# Inactive until this folder is pushed to GitHub and Pages is set to "GitHub Actions".
+# OPTIONAL, manual only. The site is normally published with `npm run publish`,
+# which uploads the built pages to the gh-pages branch.
+# This workflow is an alternative for when GitHub Pages is set to "GitHub Actions";
+# it does not run automatically.
 name: Deploy site
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
