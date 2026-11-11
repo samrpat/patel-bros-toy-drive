@@ -1,0 +1,59 @@
+{
+  "_note": "Past results. Source: last year's website. Hidden on the public site until `confirmed.history` is true in the current campaign file.",
+  "years": [
+    {
+      "year": 2025,
+      "headline": "878 toys",
+      "note": "Our biggest year so far.",
+      "photo": "toy-wall.jpg",
+      "alt": "The three brothers sitting in front of the 2025 toy collection"
+    },
+    {
+      "year": 2023,
+      "headline": "700+ toys",
+      "note": null,
+      "photo": "y2023.jpg",
+      "alt": "The three brothers in front of the 2023 toy collection"
+    },
+    {
+      "year": 2022,
+      "headline": "400+ toys",
+      "note": null,
+      "photo": "y2022.jpg",
+      "alt": "The three brothers with the 2022 toy collection"
+    },
+    {
+      "year": 2020,
+      "headline": "Where it started",
+      "note": null,
+      "photo": "y2020.jpg",
+      "alt": "The three brothers with the 2020 toy collection"
+    }
+  ],
+  "gallery": [
+    {
+      "photo": "shopping.jpg",
+      "alt": "Shopping day: carts full of toys outside the store"
+    },
+    {
+      "photo": "sorting.jpg",
+      "alt": "Sorting the toys"
+    },
+    {
+      "photo": "dropoff.jpg",
+      "alt": "Drop-off day"
+    },
+    {
+      "photo": "setup.jpg",
+      "alt": "Setting up the YMCA holiday store"
+    },
+    {
+      "photo": "ymca-shop.jpg",
+      "alt": "Volunteers and staff holding toys in the YMCA holiday store"
+    },
+    {
+      "photo": "toys-room.jpg",
+      "alt": "A room filled with donated toys, laid out across the floor and table"
+    }
+  ]
+}

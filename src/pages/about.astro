@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Band from '../components/Band.astro';
+import Tbc from '../components/Tbc.astro';
+import { campaign, logo, photo, canShow } from '../lib/campaign.js';
+const { content } = campaign;
+const showPhoto = canShow('lastYearPhotos');
+---
+<Base title="About & FAQ" current="about"
+  description={`About the Patel Brothers’ Toy Drive: a community toy drive, now in its ${campaign.edition} year, collecting new toys for K–8 kids with the YMCA of Greater Boston, local partners, and neighbors like you.`}>
+  <section style="padding-bottom:36px">
+    <div class={showPhoto ? 'wrap two' : 'wrap'}>
+      <div>
+        <p class="eyebrow">About the drive</p>
+        <h1>Started by three brothers. <span class="mark">Powered by a community.</span></h1>
+        <div class="prose" style="margin-top:18px">
+          <p class="lead">{campaign.tagline}.</p>
+          <p>This is our {campaign.edition} toy drive. With help from our partners, we collect {campaign.collecting} and set up a holiday store where the YMCA’s Partner Schools can make the holidays better for hundreds of K–8 kids.</p>
+          {content.story ? <p>{content.story}</p> : <Tbc box label="The brothers’ own story goes here, in their words: who they are, why they started, what the day at the store is like." />}
+        </div>
+      </div>
+      {showPhoto && <div class="hero-photo" style="margin-top:20px"><Image src={photo('toy-wall.jpg')} alt="The three brothers sitting in front of a wall of donated toys" widths={[480, 800, 1100]} sizes="(min-width: 900px) 520px, 100vw" /></div>}
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="sec-head"><h2>With help from</h2></div>
+      <div class="plist">
+        {campaign.partners.map((p) => (
+          <div class="prow">
+            <Image src={logo(p.logo)} alt="" height={140} densities={[1, 2]} loading="lazy" />
+            <h3>{p.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two">
+      <div class="sec-head"><h2>Questions</h2><p class="muted">Short answers to what people ask most.</p></div>
+      <div class="faq">
+        <details open><summary>What kind of toys should I give?</summary><p>New, unwrapped toys for kids in kindergarten through 8th grade. {content.toyGuidance || <Tbc label="price range, not accepted" />}</p></details>
+        <details><summary>When is the deadline?</summary><p>All donations must be received by {campaign.deadlineLabel}.</p></details>
+        <details><summary>Where do the toys go?</summary><p>To a holiday store we create so the YMCA’s Partner Schools can make the holidays better for hundreds of K–8 kids.</p></details>
+        {content.venmoUse && <details><summary>What happens to Venmo donations?</summary><p>{content.venmoUse}</p></details>}
+        <details id="privacy"><summary>Does this website track me?</summary><p>We count visits and which buttons are used, so we can tell whether the site helps the drive. We don’t use cookies, we don’t collect names, emails or payment details, and we never see who you are. Payments happen entirely inside Venmo.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <Band />
+</Base>

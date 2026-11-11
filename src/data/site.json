@@ -1,0 +1,11 @@
+{
+  "name": "Patel Brothers’ Toy Drive",
+  "currentYear": 2026,
+  "analytics": {
+    "provider": "umami",
+    "umamiWebsiteId": "8b949f3e-f736-49ae-95ca-bf239402b84d",
+    "umamiScript": "https://cloud.umami.is/script.js",
+    "ga4MeasurementId": "",
+    "umamiDomains": "samrpat.github.io"
+  }
+}

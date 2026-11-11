@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Tbc from '../components/Tbc.astro';
+import { campaign, href, photo, venmoUrl, directionsUrl } from '../lib/campaign.js';
+const { venmo, dropoff, ship, content } = campaign;
+const address = ship.addressLines.join('\n');
+const shareUrl = new URL(href('/'), Astro.site).href;
+---
+<Base title="How to donate" current="donate" sticky={false}
+  description={`Three ways to give to the Patel Brothers’ Toy Drive by ${campaign.deadlineLabel}: Venmo, drop off at one of ${dropoff.locations.length} locations, or ship a toy directly.`}>
+
+  <!-- After the deadline -->
+  <section class="ended-only center">
+    <div class="wrap">
+      <p class="eyebrow">Thank you</p>
+      <h1>This year’s drive has ended</h1>
+      <p class="lead" style="margin:16px auto 22px;max-width:50ch">Donations closed on {campaign.deadlineLabel}. Thank you to everyone who gave. We’ll be back next year.</p>
+      <a class="btn" href={href('/impact/')}>See the impact</a>
+    </div>
+  </section>
+
+  <div class="active-only">
+    <div class="wrap page-head" data-track-view="donate_view">
+      <p class="eyebrow">How to donate</p>
+      <h1>Three ways to give</h1>
+      <p class="lead" style="margin-top:14px;max-width:60ch">We’re collecting {campaign.collecting} for K–8 kids. Everything must reach us by {campaign.deadlineLabel}.</p>
+      <nav class="chips" aria-label="Donation methods">
+        <a href="#venmo" data-track="method_select" data-track-method="venmo">Venmo</a>
+        <a href="#dropoff" data-track="method_select" data-track-method="dropoff">Drop off</a>
+        <a href="#ship" data-track="method_select" data-track-method="ship">Ship</a>
+      </nav>
+    </div>
+
+    <section style="padding-top:8px">
+      <div class="wrap">
+        <article class="method" id="venmo">
+          <header><Icon name="venmo" /><div><h2>Venmo</h2><p class="muted" style="margin:0">{venmo.tagline}</p></div></header>
+          <div style="display:grid;gap:16px">
+            <p style="margin:0">Send any amount to <b>@{venmo.handle}</b>. We’ll take it to the store and fill the carts.</p>
+            <a class="btn primary block" href={venmoUrl()} target="_blank" rel="noopener" data-track="venmo_open" data-track-method="venmo">Give with Venmo</a>
+            <p class="small muted" style="margin:-6px 0 0">The button opens Venmo with the recipient and a note already filled in. Just enter an amount and pay.</p>
+            {content.venmoUse ? <div class="note"><b>What your money does</b>{content.venmoUse}</div> : null}
+          </div>
+          <div class="qr">
+            <Image src={photo('venmo-qr.jpg')} alt={`Venmo QR code for @${venmo.handle}`} width={220} densities={[1, 1.5]} loading="lazy" />
+            <p class="small muted" style="margin:8px 0 0">On a computer? Scan with your phone.</p>
+          </div>
+        </article>
+
+        <article class="method" id="dropoff">
+          <header><Icon name="dropoff" /><div><h2>Drop off</h2><p class="muted" style="margin:0">{dropoff.tagline}</p></div></header>
+          <div class="loc-cards">
+            {dropoff.locations.map((l) => (
+              <div class="loc">
+                <h3>{l.name}</h3>
+                <span>{l.street}<br />{l.city}</span>
+                {l.hours && <span><b>When:</b> {l.hours}</span>}
+                {l.instructions && <span>{l.instructions}</span>}
+                {!l.hours && <Tbc label="hours" />}
+                <a class="btn sm" style="margin-top:8px" href={directionsUrl(l)} target="_blank" rel="noopener" data-track="directions_click" data-track-method="dropoff" data-track-location={l.id}>Get directions<span class="sr-only"> to {l.name}</span></a>
+              </div>
+            ))}
+          </div>
+          <div style="grid-column:1/-1" class="note">
+            <b>What to give</b>
+            <ul class="checks" style="margin-top:8px">
+              <li>New toys, in their packaging</li>
+              <li>Unwrapped, so they can go on the store shelves</li>
+              <li>Suitable for kids in kindergarten through 8th grade</li>
+            </ul>
+            {content.toyGuidance ? <p style="margin:10px 0 0">{content.toyGuidance}</p> : <p class="small" style="margin:10px 0 0"><Tbc label="price range and anything not accepted" /></p>}
+          </div>
+        </article>
+
+        <article class="method" id="ship">
+          <header><Icon name="ship" /><div><h2>Ship</h2><p class="muted" style="margin:0">{ship.tagline}</p></div></header>
+          <ol class="ol">
+            <li><div><b>Pick a new toy</b> from any online store.</div></li>
+            <li><div><b>Ship it to this address.</b> Use the copy button so it’s exact.</div></li>
+            <li><div><b>Add a gift note</b> saying it’s for “{ship.giftNote}”, so we know it’s a donation.</div></li>
+            <li><div><b>Order early.</b> It has to arrive by {campaign.deadlineLabel}.</div></li>
+          </ol>
+          <div style="display:grid;gap:12px">
+            <address class="addr">{ship.addressLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</address>
+            <button class="btn block" type="button" data-copy={address} data-track="address_copy" data-track-method="ship">Copy address</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="soft center">
+      <div class="wrap">
+        <h2>Know someone who’d help?</h2>
+        <p class="muted" style="margin:10px auto 20px;max-width:46ch">Sharing this page is the fastest way to grow the drive.</p>
+        <button class="btn" type="button" data-share={shareUrl} data-track="share_click">Share this page</button>
+      </div>
+    </section>
+  </div>
+</Base>

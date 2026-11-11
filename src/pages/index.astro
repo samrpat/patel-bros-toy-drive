@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import GiveCards from '../components/GiveCards.astro';
+import YearsStrip from '../components/YearsStrip.astro';
+import Partners from '../components/Partners.astro';
+import Band from '../components/Band.astro';
+import Pending from '../components/Pending.astro';
+import Tbc from '../components/Tbc.astro';
+import { campaign, history, href, photo, canShow } from '../lib/campaign.js';
+const last = history.years[0];
+---
+<Base current="home">
+  <!-- Hero: while the drive is running -->
+  <section class="hero active-only">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">{campaign.tagline}</p>
+        <h1>New toys for <span class="mark">hundreds of kids</span> this holiday.</h1>
+        <p class="lead" style="margin-top:16px">It’s our {campaign.edition} toy drive. {campaign.beneficiary}</p>
+        <div class="cta">
+          <a class="btn primary" href="#give">Choose how to give</a>
+          <a class="btn" href={href('/about/')}>How it works</a>
+        </div>
+        <ul class="facts"><li>New, unwrapped toys</li><li>{campaign.dropoff.locations.length} drop-off spots</li><li>Venmo or ship</li></ul>
+      </div>
+      <div class="hero-photo">
+        <Image src={photo('signs-2026.jpg')} alt="The three Patel brothers on a window seat holding hand-drawn signs reading Please, Help Us, Help Others, with their cat between them" widths={[480, 800, 1200]} sizes="(min-width: 900px) 520px, 100vw" loading="eager" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero: after the deadline -->
+  <section class="hero ended-only">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Thank you</p>
+        {campaign.finalToyCount
+          ? <h1><span class="mark">{campaign.finalToyCount.toLocaleString('en-US')} toys.</span> You did that.</h1>
+          : <h1>Thank you for <span class="mark">helping us help others.</span></h1>}
+        <p class="lead" style="margin-top:16px">Our {campaign.edition} toy drive is complete. {campaign.finalToyCount ? '' : 'We’re counting the toys now and will share the total here soon.'}</p>
+        <div class="cta"><a class="btn primary" href={href('/impact/')}>See the photos</a></div>
+      </div>
+      <div class="hero-photo">
+        <Image src={photo('signs-2026.jpg')} alt="The three Patel brothers holding hand-drawn signs reading Please, Help Us, Help Others" widths={[480, 800, 1200]} sizes="(min-width: 900px) 520px, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Three ways to give -->
+  <section class="soft active-only" id="give" data-track-view="donate_view">
+    <div class="wrap">
+      <div class="sec-head"><h2>Three ways to give</h2><p class="muted">Pick whichever is easiest. Everything must reach us by {campaign.deadlineLabel}.</p></div>
+      <GiveCards />
+    </div>
+  </section>
+
+  <!-- Five years of signs -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Five years, same three signs</h2><p class="muted">Every drive starts with the same photo. The brothers get taller; the message doesn’t change.</p></div>
+      <YearsStrip />
+    </div>
+  </section>
+
+  <!-- Where it goes -->
+  <section class="soft">
+    <div class="wrap">
+      <div class="sec-head"><h2>Where your gift goes</h2></div>
+      <div class="steps">
+        <div class="step">
+          {canShow('lastYearPhotos') && <Image src={photo('shopping.jpg')} alt="Shopping carts full of toys outside a store" width={640} height={427} fit="cover" loading="lazy" />}
+          <h3>You give</h3><p>Drop off a toy, ship one, or send money and we do the shopping.</p>
+        </div>
+        <div class="step">
+          {canShow('lastYearPhotos') && <Image src={photo('toy-wall.jpg')} alt="The brothers in front of a wall of collected toys" width={640} height={427} fit="cover" loading="lazy" />}
+          <h3>We gather the toys</h3><p>Everything dropped off, shipped and bought comes together in one place.</p>
+        </div>
+        <div class="step">
+          {canShow('lastYearPhotos') && <Image src={photo('ymca-shop.jpg')} alt="Volunteers and staff holding toys in the YMCA holiday store" width={640} height={427} fit="cover" loading="lazy" />}
+          <h3>The holiday store opens</h3><p>The YMCA’s Partner Schools use the store to make the holidays better for hundreds of K–8 kids.</p>
+        </div>
+      </div>
+      {!campaign.confirmed.lastYearPhotos && <Tbc box label="The three photos above are from last year’s site and need your approval. Without it, this section shows text only." />}
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section>
+    <div class="wrap two">
+      <div class="sec-head"><h2>A drive that keeps growing</h2><p class="muted">Five drives and counting, with more partners and more places to give.</p><a class="link" href={href('/impact/')}>See the photos</a></div>
+      <div class="stats">
+        <div class="stat"><b>{campaign.edition}</b><span>annual drive</span></div>
+        {canShow('history') && <div class="stat"><b>{last.headline.split(' ')[0]}</b><span>toys in {last.year} {!campaign.confirmed.history && <Tbc />}</span></div>}
+        <div class="stat"><b>{campaign.partners.length}</b><span>community partners</span></div>
+        <div class="stat"><b>{campaign.dropoff.locations.length}</b><span>drop-off locations</span></div>
+      </div>
+    </div>
+  </section>
+
+  <Partners />
+  <Band />
+</Base>

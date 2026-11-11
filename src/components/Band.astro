@@ -1,0 +1,11 @@
+---
+import { campaign, href } from '../lib/campaign.js';
+const { heading = 'Ready to help?' } = Astro.props;
+---
+<section class="band active-only">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <p>Donations must be received by {campaign.deadlineLabel}.</p>
+    <a class="btn primary" href={href('/donate/')}>Choose how to give</a>
+  </div>
+</section>

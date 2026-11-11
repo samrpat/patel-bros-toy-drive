@@ -1,0 +1,15 @@
+---
+// Wraps content that exists but still needs the organiser's confirmation.
+// Confirmed → shown normally. Unconfirmed → hidden on the public site,
+// shown with a yellow tag in review builds.
+import { REVIEW, isConfirmed } from '../lib/campaign.js';
+const { k, label = 'Awaiting your confirmation' } = Astro.props;
+const ok = isConfirmed(k);
+---
+{ok && <slot />}
+{!ok && REVIEW && (
+  <>
+    <p class="tbc-box" style="margin-bottom:14px">{label}</p>
+    <slot />
+  </>
+)}

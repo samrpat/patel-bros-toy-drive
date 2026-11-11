@@ -1,0 +1,136 @@
+---
+import '@fontsource/chewy';
+import '@fontsource/league-spartan/700.css';
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DeadlineStrip from '../components/DeadlineStrip.astro';
+import StickyDonate from '../components/StickyDonate.astro';
+import { site, campaign, href, REVIEW } from '../lib/campaign.js';
+
+const { title, description, current = '', sticky = true } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} ${campaign.year} · New toys for K–8 kids`;
+const desc =
+  description ||
+  `The ${campaign.edition} annual Patel Brothers’ Toy Drive is collecting ${campaign.collecting} for K–8 kids through the YMCA’s Partner Schools. Donate by ${campaign.deadlineLabel}: drop off, Venmo, or ship.`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(href('/og.jpg'), Astro.site).href;
+const a = site.analytics;
+const provider = a.provider === 'umami' && a.umamiWebsiteId ? 'umami' : a.provider === 'ga4' && a.ga4MeasurementId ? 'ga4' : 'none';
+const stateCfg = { deadline: campaign.deadline, label: campaign.deadlineLabel, tz: campaign.timezone };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: new URL(href('/'), Astro.site).href,
+  description: desc,
+};
+---
+<!doctype html>
+<html lang="en" data-state="active">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <meta name="theme-color" content="#17130f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Three brothers holding hand-drawn signs that read Please, Help Us, Help Others" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {REVIEW && <meta name="robots" content="noindex" />}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Campaign state: decides "active" or "ended" from today's date before the page paints. -->
+    <script is:inline define:vars={{ stateCfg }}>
+      (function () {
+        var today = new Intl.DateTimeFormat('en-CA', { timeZone: stateCfg.tz }).format(new Date());
+        var force = new URLSearchParams(location.search).get('state');
+        var ended = force ? force === 'ended' : today > stateCfg.deadline;
+        var days = Math.round((Date.parse(stateCfg.deadline) - Date.parse(today)) / 864e5);
+        document.documentElement.dataset.state = ended ? 'ended' : 'active';
+        window.__campaign = { ended: ended, daysLeft: days };
+      })();
+    </script>
+
+    <script type="application/json" id="analytics-config" set:html={JSON.stringify({ provider })} />
+    {provider === 'umami' && <script is:inline defer src={a.umamiScript} data-website-id={a.umamiWebsiteId} data-domains={a.umamiDomains || undefined} />}
+    {provider === 'ga4' && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${a.ga4MeasurementId}`} />}
+    {provider === 'ga4' && (
+      <script is:inline define:vars={{ id: a.ga4MeasurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', id);
+      </script>
+    )}
+  </head>
+  <body class={sticky ? '' : 'no-sticky'}>
+    <a class="skip" href="#main">Skip to content</a>
+    {REVIEW && <div style="background:#fff6d6;color:#6b4a00;text-align:center;font-size:.85rem;padding:6px 12px;border-bottom:1.5px dashed #9a6b00;font-weight:600">Review build — yellow tags mark content awaiting confirmation. They never appear on the public site.</div>}
+    <DeadlineStrip />
+    <Header current={current} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    {sticky && <StickyDonate />}
+
+    <script>
+      import '../lib/analytics.js';
+      import { track } from '../lib/analytics.js';
+
+      // Countdown text
+      const c = window.__campaign;
+      if (c && !c.ended) {
+        const txt = c.daysLeft <= 0 ? 'Last day' : c.daysLeft === 1 ? '1 day left' : `${c.daysLeft} days left`;
+        document.querySelectorAll('[data-days-left]').forEach((el) => (el.textContent = txt));
+      }
+
+      // Copy shipping address
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const label = btn.textContent;
+          try {
+            await navigator.clipboard.writeText(btn.dataset.copy);
+            btn.textContent = 'Copied';
+          } catch {
+            btn.textContent = 'Press and hold the address to copy';
+          }
+          setTimeout(() => (btn.textContent = label), 2200);
+        });
+      });
+
+      // Share
+      document.querySelectorAll('[data-share]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const url = btn.dataset.share;
+          const label = btn.textContent;
+          if (navigator.share) {
+            try { await navigator.share({ title: document.title, url }); } catch { /* cancelled */ }
+          } else {
+            try { await navigator.clipboard.writeText(url); btn.textContent = 'Link copied'; } catch { btn.textContent = url; }
+            setTimeout(() => (btn.textContent = label), 2200);
+          }
+        });
+      });
+
+      // Close the phone menu after choosing a link or pressing Escape
+      const menu = document.querySelector('details.menu');
+      if (menu) {
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') menu.open = false; });
+        document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import { campaign, photo } from '../lib/campaign.js';
+---
+<div class="years" tabindex="0" role="group" aria-label="Sign photos from each year of the drive">
+  {campaign.signPhotos.map((s) => (
+    <figure>
+      <Image src={photo(s.file)} alt={s.alt} width={520} height={390} fit="cover" loading="lazy" />
+      {s.label && <figcaption>{s.label}</figcaption>}
+    </figure>
+  ))}
+</div>

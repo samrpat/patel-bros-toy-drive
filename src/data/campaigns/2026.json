@@ -1,0 +1,118 @@
+{
+  "year": 2026,
+  "edition": "5th",
+  "deadline": "2026-12-08",
+  "deadlineLabel": "December 8",
+  "timezone": "America/New_York",
+  "tagline": "Please help us, help others",
+  "collecting": "new, unwrapped toys",
+  "beneficiary": "We’re creating a holiday store so the YMCA’s Partner Schools can make the holidays better for hundreds of K–8 kids.",
+  "finalToyCount": null,
+  "venmo": {
+    "handle": "stephaniepatel499",
+    "note": "Toy Drive (web)",
+    "tagline": "Leave the shopping to us"
+  },
+  "ship": {
+    "tagline": "From an online store directly to us",
+    "addressLines": [
+      "Patel Brothers’ Toy Drive",
+      "499 Webster St",
+      "Needham, MA 02494"
+    ],
+    "giftNote": "Patel Brothers’ Toy Drive"
+  },
+  "dropoff": {
+    "tagline": "At one of 3 locations",
+    "locations": [
+      {
+        "id": "needham",
+        "name": "Needham",
+        "street": "499 Webster St",
+        "city": "Needham, MA",
+        "hours": "Anytime",
+        "instructions": null
+      },
+      {
+        "id": "hometown-arcade",
+        "name": "Hometown Arcade",
+        "street": "61 Endicott St, Building 26A",
+        "city": "Norwood, MA",
+        "hours": "During Hometown Arcade’s business hours",
+        "instructions": null
+      },
+      {
+        "id": "boston-united",
+        "name": "Boston United Volleyball Club",
+        "street": "110 Andrew Ave",
+        "city": "Wayland, MA",
+        "hours": "During the club’s business hours",
+        "instructions": null
+      }
+    ]
+  },
+  "partners": [
+    {
+      "id": "storytime-crafts",
+      "name": "Storytime Crafts",
+      "logo": "storytime-crafts.png",
+      "url": null
+    },
+    {
+      "id": "ymca",
+      "name": "YMCA of Greater Boston",
+      "logo": "ymca.png",
+      "url": null
+    },
+    {
+      "id": "hometown-arcade",
+      "name": "Hometown Arcade",
+      "logo": "hometown-arcade.png",
+      "url": null
+    },
+    {
+      "id": "boston-united",
+      "name": "Boston United Volleyball Club",
+      "logo": "boston-united-volleyball.png",
+      "url": null
+    }
+  ],
+  "signPhotos": [
+    {
+      "file": "signs-1.jpg",
+      "label": "2020",
+      "alt": "The three brothers as young children holding hand-drawn Please, Help Us, Help Others signs"
+    },
+    {
+      "file": "signs-2.jpg",
+      "label": "2022",
+      "alt": "The three brothers holding hand-drawn Please, Help Us, Help Others signs"
+    },
+    {
+      "file": "signs-3.jpg",
+      "label": "2023",
+      "alt": "The three brothers holding hand-drawn Please, Help Us, Help Others signs, with their cat"
+    },
+    {
+      "file": "signs-4.jpg",
+      "label": "2025",
+      "alt": "The three brothers holding hand-drawn Please, Help Us, Help Others signs"
+    },
+    {
+      "file": "signs-2026.jpg",
+      "label": "2026 · This year",
+      "alt": "The three brothers holding this year's Please, Help Us, Help Others signs, with their cat between them"
+    }
+  ],
+  "content": {
+    "toyGuidance": null,
+    "venmoUse": "Every dollar goes toward toys. We do the shopping for you.",
+    "story": null,
+    "contact": "patelbrotherstoydrive@gmail.com"
+  },
+  "_confirmed_help": "Set an item to true once the organiser has confirmed it. Unconfirmed items are hidden on the public site and shown with a yellow tag in review builds.",
+  "confirmed": {
+    "history": true,
+    "lastYearPhotos": true
+  }
+}

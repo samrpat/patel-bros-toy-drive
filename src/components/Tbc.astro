@@ -1,0 +1,7 @@
+---
+// Review-only marker for information the organiser has not supplied yet.
+// Renders nothing on the public site.
+import { REVIEW } from '../lib/campaign.js';
+const { label = 'To confirm', box = false } = Astro.props;
+---
+{REVIEW && (box ? <p class="tbc-box">{label}</p> : <span class="tbc">{label}</span>)}

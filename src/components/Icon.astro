@@ -1,0 +1,9 @@
+---
+const { name } = Astro.props;
+const tone = { venmo: 'r', dropoff: 'g', ship: 'b' }[name];
+---
+<span class={`ico ${tone}`} aria-hidden="true">
+  {name === 'venmo' && <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.5A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.5C19 15.6 12 20 12 20z"/></svg>}
+  {name === 'dropoff' && <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-10.5a6 6 0 0 1 12 0C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg>}
+  {name === 'ship' && <svg viewBox="0 0 24 24"><path d="M3.5 8 12 3.5 20.5 8v8L12 20.5 3.5 16z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/></svg>}
+</span>

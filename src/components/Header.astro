@@ -1,0 +1,27 @@
+---
+import { site, href } from '../lib/campaign.js';
+const { current } = Astro.props;
+const links = [
+  { id: 'home', label: 'Home', path: '/' },
+  { id: 'about', label: 'About & FAQ', path: '/about/' },
+  { id: 'impact', label: 'Impact', path: '/impact/' },
+];
+---
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href={href('/')}>{site.name}</a>
+    <nav class="nav" aria-label="Main">
+      {links.map((l) => <a href={href(l.path)} aria-current={current === l.id ? 'page' : undefined}>{l.label}</a>)}
+      <a class="btn primary sm active-only" href={href('/donate/')}>Donate</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Main">
+        <a href={href('/')}>Home</a>
+        <a class="active-only" href={href('/donate/')}>Donate</a>
+        <a href={href('/about/')}>About &amp; FAQ</a>
+        <a href={href('/impact/')}>Impact</a>
+      </nav>
+    </details>
+  </div>
+</header>

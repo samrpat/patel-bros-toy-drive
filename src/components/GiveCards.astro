@@ -1,0 +1,43 @@
+---
+// The three ways to give, as on the flyer. Used on the home page.
+import Icon from './Icon.astro';
+import { campaign, href, venmoUrl, directionsUrl } from '../lib/campaign.js';
+const { venmo, dropoff, ship } = campaign;
+const address = ship.addressLines.join('\n');
+---
+<div class="give">
+  <article class="card">
+    <Icon name="venmo" />
+    <h3>Venmo</h3>
+    <p class="sub">{venmo.tagline}</p>
+    <p>Send any amount to <b>@{venmo.handle}</b> and we’ll buy the toys.</p>
+    <div class="foot">
+      <a class="btn primary block" href={venmoUrl()} target="_blank" rel="noopener" data-track="venmo_open" data-track-method="venmo">Give with Venmo</a>
+      <p class="small muted" style="margin:8px 0 0;text-align:center">Opens Venmo with our details filled in</p>
+    </div>
+  </article>
+
+  <article class="card">
+    <Icon name="dropoff" />
+    <h3>Drop off</h3>
+    <p class="sub">{dropoff.tagline}</p>
+    <ul class="locs">
+      {dropoff.locations.map((l) => (
+        <li>
+          <div><b>{l.name}</b><span>{l.street}, {l.city}</span></div>
+          <a class="link small" href={directionsUrl(l)} target="_blank" rel="noopener" data-track="directions_click" data-track-method="dropoff" data-track-location={l.id} aria-label={`Directions to ${l.name}`}>Directions</a>
+        </li>
+      ))}
+    </ul>
+    <div class="foot"><a class="btn block" href={href('/donate/#dropoff')} data-track="method_select" data-track-method="dropoff">Drop-off details</a></div>
+  </article>
+
+  <article class="card">
+    <Icon name="ship" />
+    <h3>Ship</h3>
+    <p class="sub">{ship.tagline}</p>
+    <address class="addr">{ship.addressLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</address>
+    <p class="small muted" style="margin:0">Add a gift note saying it’s for “{ship.giftNote}”.</p>
+    <div class="foot"><button class="btn block" type="button" data-copy={address} data-track="address_copy" data-track-method="ship">Copy address</button></div>
+  </article>
+</div>

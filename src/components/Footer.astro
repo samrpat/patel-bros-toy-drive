@@ -1,0 +1,20 @@
+---
+import { site, campaign, href } from '../lib/campaign.js';
+import Tbc from './Tbc.astro';
+const c = campaign.content.contact;
+---
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="brand">{site.name}</span><br />
+      <span class="muted">{campaign.tagline}.</span>
+      {c ? <span class="muted"> Contact: <a href={`mailto:${c}`}>{c}</a></span> : <Tbc label="contact method" />}
+    </div>
+    <nav aria-label="Footer">
+      <a class="active-only" href={href('/donate/')}>Donate</a>
+      <a href={href('/about/')}>About &amp; FAQ</a>
+      <a href={href('/impact/')}>Impact</a>
+      <a href={href('/about/#privacy')}>Privacy</a>
+    </nav>
+  </div>
+</footer>

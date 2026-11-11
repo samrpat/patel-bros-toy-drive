@@ -1,0 +1,15 @@
+---
+import { Image } from 'astro:assets';
+import { campaign, logo } from '../lib/campaign.js';
+---
+<section class="soft center">
+  <div class="wrap">
+    <div class="sec-head"><h2>With help from</h2></div>
+    <div class="partners">
+      {campaign.partners.map((p) => (
+        <div><Image src={logo(p.logo)} alt={p.name} height={152} densities={[1, 2]} /></div>
+      ))}
+    </div>
+    <p class="and-you">…and you!</p>
+  </div>
+</section>

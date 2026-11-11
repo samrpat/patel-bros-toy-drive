@@ -1,0 +1,8 @@
+---
+import { campaign, href } from '../lib/campaign.js';
+const short = campaign.deadlineLabel.replace('December', 'Dec');
+---
+<div class="sticky active-only">
+  <div><b>Due {short}</b><span data-days-left></span></div>
+  <a class="btn primary" href={href('/donate/')}>Donate</a>
+</div>
