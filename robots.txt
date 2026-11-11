@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samrpat.github.io/patel-bros-toy-drive/sitemap.xml
