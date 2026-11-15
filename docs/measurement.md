@@ -58,4 +58,4 @@ In `src/data/site.json` set `"provider": "ga4"` and fill in `ga4MeasurementId`. 
 
 ## Local previews are not counted
 
-The tracking tag only reports visits on `samrpat.github.io` (`umamiDomains` in `src/data/site.json`), so testing on your own computer never inflates the numbers. If the site moves to another address, update that setting.
+The tracking tag only reports visits on `patelbrostoydrive.org` (`umamiDomains` in `src/data/site.json`), so testing on your own computer never inflates the numbers. If the site moves to another address, update that setting.

@@ -15,7 +15,7 @@ export const isConfirmed = (key) => campaign.confirmed?.[key] === true;
 /** Should this item be rendered at all? */
 export const canShow = (key) => isConfirmed(key) || REVIEW;
 
-// Links must include the site's base path (e.g. /patel-bros-toy-drive/).
+// Links must include the site's base path (currently just /).
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 export const href = (path = '/') => `${base}${path}`;
 
